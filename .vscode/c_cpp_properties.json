@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/include/GLFW",
+                "${workspaceFolder}/src",
+                "${workspaceFolder}/lib"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.22621.0",
+            "compilerPath": "C:/Users/Hacis/scoop/apps/gcc/current/bin/g++.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-gcc-x64"
+        }
+    ],
+    "version": 4
+}
