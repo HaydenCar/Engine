@@ -7,15 +7,24 @@
 
 #ifndef engine_hpp
 #define engine_hpp
+#define GL_SILENCE_DEPRECATION
+#include <GLFW/glfw3.h>
+
 
 class Engine{
 public:
     void run();
     
+    GLFWwindow* window;
+    
 private:
     void init();
     void mainLoop();
     void cleanup();
+    
+    const unsigned int SCREEN_WIDTH = 800;
+    const unsigned int SCREEN_HEIGHT = 600;
+    
 };
 
 #endif /* engine_hpp */

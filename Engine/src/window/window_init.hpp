@@ -7,13 +7,10 @@
 
 #ifndef window_init_hpp
 #define window_init_hpp
+#define GL_SILENCE_DEPRECATION
 #include <GLFW/glfw3.h>
 
-// settings
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
-
-void window_init();
+GLFWwindow* window_init(int width, int height, const char* title);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 #endif /* window_init_hpp */
