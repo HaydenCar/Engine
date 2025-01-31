@@ -16,8 +16,8 @@ public:
     Renderer();
     ~Renderer();
 
-    void createRenderData();
-    void renderFrame();
+    void create_render_data();
+    void render_frame();
     
 private:
     unsigned int VBO, VAO, EBO;

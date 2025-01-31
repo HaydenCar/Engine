@@ -23,7 +23,7 @@ Renderer::~Renderer() {
 }
 
 // Method to create render data
-void Renderer::createRenderData() {
+void Renderer::create_render_data() {
     float vertices[] = {
          0.5f,  0.5f, 0.0f,  // top right
          0.5f, -0.5f, 0.0f,  // bottom right
@@ -59,7 +59,7 @@ void Renderer::createRenderData() {
 }
 
 // Method to render a frame
-void Renderer::renderFrame() {
+void Renderer::render_frame() {
     static float r = 0.2f, g = 0.3f, b = 0.3f;
 
     glClearColor(r, g, b, 1.0f);

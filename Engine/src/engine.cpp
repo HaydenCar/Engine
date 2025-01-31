@@ -25,7 +25,7 @@ void Engine::run(){
 void Engine::init(){
     window = window_init(SCREEN_WIDTH, SCREEN_HEIGHT, "Engine");
     glew_init();
-    renderer.createRenderData();
+    renderer.create_render_data();
 }
 
 void Engine::mainLoop(){
@@ -34,7 +34,7 @@ void Engine::mainLoop(){
         check_input(window);
         
         //render
-        renderer.renderFrame();
+        renderer.render_frame();
         
         // swap buffers and poll IO events
         glfwSwapBuffers(window);
