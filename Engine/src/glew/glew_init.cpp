@@ -16,5 +16,5 @@ void glew_init(){
     {
         std::cerr << "Failed to initialize GLEW" << std::endl;
     }
-    std::cout << "initialised glew\n";
+    std::cout << glGetString(GL_VERSION) << std::endl;
 }
