@@ -10,14 +10,15 @@
 #define GL_SILENCE_DEPRECATION
 #define GLFW_INCLUDE_GLCOREARB
 #include <GLFW/glfw3.h>
-
+#include "renderer/renderer.hpp"
 
 class Engine{
 public:
     void run();
     
     GLFWwindow* window;
-    
+    Renderer renderer;
+
 private:
     void init();
     void mainLoop();
@@ -25,7 +26,6 @@ private:
     
     const unsigned int SCREEN_WIDTH = 800;
     const unsigned int SCREEN_HEIGHT = 600;
-    
 };
 
 #endif /* engine_hpp */

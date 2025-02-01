@@ -9,10 +9,6 @@
 #include "window/window_init.hpp"
 #include "glew/glew_init.hpp"
 #include "check_input.hpp"
-#include "shaders/create_shader_program.hpp"
-#include "renderer/renderer.hpp"
-
-Renderer renderer;
 
 void Engine::run(){
     init();
