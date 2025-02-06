@@ -1,1 +1,1 @@
-OpenGL Engine probably for my college project
+OpenGL Rendering Engine for college project
