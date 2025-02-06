@@ -1,1 +1,1 @@
-OpenGL Engine probably gonna be used for my college project
+OpenGL Engine probably for my college project
