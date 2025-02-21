@@ -4,6 +4,8 @@
 //
 //  Created by Hayden Carr on 31/01/2025.
 //
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
 #include "renderer.hpp"
 #include "../shaders/shader.hpp"
