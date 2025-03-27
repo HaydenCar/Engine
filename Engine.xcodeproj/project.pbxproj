@@ -273,11 +273,13 @@
 					/usr/local/include,
 					/opt/homebrew/Cellar/glfw/3.4/include,
 					/opt/homebrew/Cellar/glew/2.2.0_1/include,
+					/opt/homebrew/Cellar/glm/1.0.1/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/opt/homebrew/Cellar/glew/2.2.0_1/lib,
 					/opt/homebrew/Cellar/glfw/3.4/lib,
+					/opt/homebrew/Cellar/glm/1.0.1/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -292,11 +294,13 @@
 					/usr/local/include,
 					/opt/homebrew/Cellar/glfw/3.4/include,
 					/opt/homebrew/Cellar/glew/2.2.0_1/include,
+					/opt/homebrew/Cellar/glm/1.0.1/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/opt/homebrew/Cellar/glew/2.2.0_1/lib,
 					/opt/homebrew/Cellar/glfw/3.4/lib,
+					/opt/homebrew/Cellar/glm/1.0.1/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
