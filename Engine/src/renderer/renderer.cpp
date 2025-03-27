@@ -99,7 +99,7 @@ void Renderer::loadData(const std::string& filename) {
     }
 
     bodies.clear();
-    int timestep, body_type, body_id;  // ← Note new order
+    int timestep, body_type, body_id;
     double x, y;
 
     // Figured this out from here read this!!!: https://stackoverflow.com/questions/43956124/c-while-loop-to-read-from-input-file
@@ -211,13 +211,13 @@ void Renderer::render_frame() {
         // Set color based on type
         glm::vec3 color;
         if (body.type == 0) {
-            color = glm::vec3(1.0f, 0.9f, 0.1f);  // Sun
+            color = glm::vec3(1.0f, 0.9f, 0.1f);
         }
         else if (body.type == 1) {
-            color = glm::vec3(0.2f, 0.5f, 1.0f);  // Earth
+            color = glm::vec3(0.2f, 0.5f, 1.0f);
         }
         else if (body.type == 2) {
-            color = glm::vec3(0.8f, 0.8f, 0.8f);  // Moon
+            color = glm::vec3(0.8f, 0.8f, 0.8f);  
         }
         ourShader.setVec3("color", color);
 
