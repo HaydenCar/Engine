@@ -91,24 +91,22 @@ Renderer::~Renderer() {
 }
 
 // Loads the data from output.dat
-void Renderer::loadData(const std::string& filename) {
+void Renderer::load_data(const std::string& filename) {
     std::ifstream file(filename);
     if (!file) {
         std::cerr << "Can't open " << filename << std::endl;
         return;
     }
 
-    bodies.clear();
     int timestep, body_type, body_id;
     double x, y;
+    double z = 0;
+    float normalise = 1e-10f;
 
     // Figured this out from here read this!!!: https://stackoverflow.com/questions/43956124/c-while-loop-to-read-from-input-file
-    while (file >> timestep >> body_type >> body_id >> x >> y) {
-        bodies.push_back({
-            body_id,
-            body_type,
-            glm::vec3(x * 1e-10f, y * 1e-10f, 0)
-        });
+    while (file >> timestep >> body_id >> x >> y) {
+        body_type = body_id;
+        bodies.push_back({body_id, body_type, glm::vec3(x * normalise, y * normalise, z)});
     }
 
     std::cout << "Loaded " << bodies.size() << " bodies" << std::endl;
@@ -206,7 +204,7 @@ void Renderer::render_frame() {
         model = glm::scale(model, glm::vec3(scale));
         
         // Rotation animation
-        model = glm::rotate(model, time * 0.5f, glm::vec3(0.0f, 1.0f, 0.0f));
+        //model = glm::rotate(model, time * 0.5f, glm::vec3(0.0f, 1.0f, 0.0f));
 
         // Set color based on type
         glm::vec3 color;

@@ -21,7 +21,7 @@ public:
 
 private:
     void init();
-    void mainLoop();
+    void main_loop();
     void cleanup();
     
     const unsigned int SCREEN_WIDTH = 800;

@@ -19,7 +19,7 @@ public:
 
     void create_render_data();
     void render_frame();
-    void loadData(const std::string& filename);
+    void load_data(const std::string& filename);
 private:
     unsigned int VBO, VAO, EBO;
 };

@@ -13,7 +13,7 @@
 void Engine::run(){
     init();
     
-    mainLoop();
+    main_loop();
     
     cleanup();
 }
@@ -24,8 +24,8 @@ void Engine::init(){
     renderer.create_render_data();
 }
 
-void Engine::mainLoop(){
-    renderer.loadData("/Users/haydencarr/Documents/Engine/Engine/Dependencies/output.dat");
+void Engine::main_loop(){
+    renderer.load_data("/Users/haydencarr/Documents/Engine/Engine/Dependencies/output.dat");
     while (!glfwWindowShouldClose(window)) {
         // input
         check_input(window);
