@@ -98,17 +98,19 @@ void Renderer::load_data(const std::string& filename) {
         return;
     }
 
-    int timestep, body_type, body_id;
+    int timestep, body_id;
     double x, y;
     double z = 0;
     float normalise = 1e-10f;
 
+    bodies.clear();
+    currentTimestep = 0;
+    lastFrameTime = 0.0f;
+
     // Figured this out from here read this!!!: https://stackoverflow.com/questions/43956124/c-while-loop-to-read-from-input-file
     while (file >> timestep >> body_id >> x >> y) {
-        body_type = body_id;
-        bodies.push_back({body_id, body_type, glm::vec3(x * normalise, y * normalise, z)});
+        bodies.push_back({body_id, glm::vec3(x * normalise, y * normalise, z)});
     }
-
     std::cout << "Loaded " << bodies.size() << " bodies" << std::endl;
 }
 
@@ -167,59 +169,71 @@ void Renderer::render_frame() {
     ourShader.use();
     glBindTexture(GL_TEXTURE_2D, texture);
     glBindVertexArray(VAO);
-
-    // Orbiting view
-    float time = glfwGetTime();
-    float cameraDistance = 5.0f;
-    float cameraX = sin(time * 0.3f) * cameraDistance;
-    float cameraZ = cos(time * 0.3f) * cameraDistance;
     
-    // Look at sun
+    // Camera setup
+    float cameraDistance = 30.0f;
+    float cameraX = 0.0f;
+    float cameraZ = cameraDistance;
+
+    // Look at the center of your data
     glm::mat4 view = glm::lookAt(
-        glm::vec3(cameraX, cameraDistance * 0.3f, cameraZ),
+        glm::vec3(cameraX, cameraDistance * 0.5f, cameraZ),
         glm::vec3(0.0f, 0.0f, 0.0f),
         glm::vec3(0.0f, 1.0f, 0.0f)
     );
 
-    // Perspective
+    // Wider perspective view
     glm::mat4 projection = glm::perspective(
-        glm::radians(45.0f),
-        800.0f / 600.0f,  // Aspect ratio
-        0.1f,             // Near plane
-        100.0f           // Far plane
+        glm::radians(60.0f),
+        800.0f / 600.0f,
+        1.0f,
+        1000.0f
     );
 
     // Send matrices to shader
     ourShader.setMat4("view", view);
     ourShader.setMat4("projection", projection);
 
-    // Render bodies
-    for (const auto& body : bodies) {
+    // Next frame when timestep is met
+    float currentTime = glfwGetTime();
+    if (currentTime - lastFrameTime > frameTimeStep) {
+        currentTimestep += bodiesPerFrame;
+        lastFrameTime = currentTime;
+           
+        // Loop back to start of data if file end
+        if (currentTimestep >= bodies.size()) {
+            currentTimestep = 0;
+        }
+    }
+    
+    // Renders the
+    int endIndex;
+    if (currentTimestep + bodiesPerFrame < bodies.size()) {endIndex = currentTimestep + bodiesPerFrame;}
+    else {endIndex = bodies.size();}
+    for (int i = currentTimestep; i < endIndex; i++) {
+        Body& body = bodies[i];
         glm::mat4 model = glm::mat4(1.0f);
-        
-        // Position and scale
-        float scale = 0.1f;
-        if (body.type == 0) scale = 0.3f;  // Stars larger
+            
+        float scale;
+        if (body.id == 0) scale = 3.0f;
+        else if (body.id == 1) scale = 1.5f;
+        else if (body.id == 2) scale = 1.5f;
+                
         model = glm::translate(model, body.position);
         model = glm::scale(model, glm::vec3(scale));
-        
-        // Rotation animation
-        //model = glm::rotate(model, time * 0.5f, glm::vec3(0.0f, 1.0f, 0.0f));
-
-        // Set color based on type
+            
         glm::vec3 color;
-        if (body.type == 0) {
+        if (body.id == 0) {
             color = glm::vec3(1.0f, 0.9f, 0.1f);
         }
-        else if (body.type == 1) {
+        else if (body.id == 1) {
             color = glm::vec3(0.2f, 0.5f, 1.0f);
         }
-        else if (body.type == 2) {
-            color = glm::vec3(0.8f, 0.8f, 0.8f);  
+        else if (body.id == 2) {
+            color = glm::vec3(0.8f, 0.8f, 0.8f);
         }
         ourShader.setVec3("color", color);
 
-        // Draw
         ourShader.setMat4("model", model);
         glDrawArrays(GL_TRIANGLES, 0, 36);
     }

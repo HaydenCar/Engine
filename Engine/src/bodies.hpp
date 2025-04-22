@@ -11,8 +11,7 @@
 #include <glm/glm.hpp>
 
 struct Body {
-    int id;
-    int type;  // 0 star, 1 planet, 2 moon using this because I dont wanna write a random colour picker
+    int id; // 0 star, 1 planet, 2 moon using this for color and size distribution aswell 
     glm::vec3 position;
 };
 

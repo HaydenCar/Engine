@@ -22,6 +22,10 @@ public:
     void load_data(const std::string& filename);
 private:
     unsigned int VBO, VAO, EBO;
+    int currentTimestep = 0;
+    int bodiesPerFrame = 3;
+    float frameTimeStep = 0.1f;
+    float lastFrameTime = 0.0f;
 };
 
 #endif /* renderer_hpp */
