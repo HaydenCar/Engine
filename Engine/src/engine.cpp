@@ -25,7 +25,9 @@ void Engine::init(){
 }
 
 void Engine::main_loop(){
-    renderer.load_data("/Users/haydencarr/Documents/Engine/Engine/Dependencies/output.dat");
+    // renderer.load_data("..//Engine/Dependencies/output.dat");
+    renderer.load_data("./Dependencies/output.dat");
+
     while (!glfwWindowShouldClose(window)) {
         // input
         check_input(window);

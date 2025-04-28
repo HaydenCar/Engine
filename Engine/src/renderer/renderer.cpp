@@ -6,6 +6,7 @@
 //
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+
 #include "renderer.hpp"
 #include "../shaders/shader.hpp"
 #include <filesystem>
@@ -18,6 +19,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "../bodies.hpp"
+#include <vector>
 
 unsigned int texture;
 
@@ -98,7 +100,8 @@ void Renderer::load_data(const std::string& filename) {
         return;
     }
 
-    int timestep, body_id;
+    unsigned int timestep;
+    int body_id;
     double x, y;
     double z = 0;
     float normalise = 1e-10f;
