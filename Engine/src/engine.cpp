@@ -25,7 +25,6 @@ void Engine::init(){
 }
 
 void Engine::main_loop(){
-    // renderer.load_data("..//Engine/Dependencies/output.dat");
     renderer.load_data("./Dependencies/output.dat");
 
     while (!glfwWindowShouldClose(window)) {
